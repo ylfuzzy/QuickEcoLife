@@ -111,12 +111,15 @@ public class MainViewController {
 	// Each tab pane possess 4 combos.
 	private final int length_btfc = 8;
 	
-	private final String title_alert = "訊息";
-	private final String message_loginFailed = "登入失敗！";
-	private final String message_troubleOccured = "發生問題，上傳失敗！";
-	private final String message_noImg = "沒有照片可以上傳！";
-	private final String message_exifErr = "此照片無法使用，因為日期資訊不存在！";
-	private final String message_finished = "照片上傳完畢！";
+	private final String TITLE_ALERT = "訊息";
+	private final String MESSAGE_LOGIN_FAILED = "登入失敗！";
+	private final String MESSAGE_TROUBLE_OCCURRED = "發生問題，上傳失敗！";
+	private final String MESSAGE_NO_IMG = "沒有照片可以上傳！";
+	private final String MESSAGE_EXIF_ERR = "此照片無法使用，因為日期資訊不存在！";
+	private final String MESSAGE_FINISHED = "照片上傳完畢！";
+	
+	// Directory of the last selected image
+	private File image_directory = null;
 	
 	/**
 	 * Initializes the controller class. This method is automatically called
@@ -184,17 +187,17 @@ public class MainViewController {
 							if (!imageCombos_clear.isEmpty()) {
 								automationModel.automateJournalPost(imageCombos_clear, "clear");
 							}
-							Platform.runLater(() -> showAlert(message_finished));
+							Platform.runLater(() -> showAlert(MESSAGE_FINISHED));
 							
 							// Debug info.
 							System.out.println("Thread " + Thread.currentThread().getName() + " successfully finished!");
 						} else {
-							Platform.runLater(() -> showAlert(message_loginFailed));
+							Platform.runLater(() -> showAlert(MESSAGE_LOGIN_FAILED));
 						}
 					} catch (NullPointerException | WebDriverException e) {
 						System.out.println("Thread: " + Thread.currentThread().getName() + " is quit.");
 						automationModel.quitChrome();
-						Platform.runLater(() -> showAlert(message_troubleOccured));
+						Platform.runLater(() -> showAlert(MESSAGE_TROUBLE_OCCURRED));
 						e.printStackTrace();
 					}
 				};
@@ -202,7 +205,7 @@ public class MainViewController {
 				thread.start();
 			}
 		} else {
-			showAlert(message_noImg);
+			showAlert(MESSAGE_NO_IMG);
 			// Debug info
 			System.out.println("no image can be uploaded.");
 		} 
@@ -228,11 +231,6 @@ public class MainViewController {
 		
 		clickedBtn.setDisable(true);
 		
-		/*
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.getExtensionFilters().addAll(
-	         new ExtensionFilter("Image Files", "*.png", "*.jpg"));
-		File selectedImg = fileChooser.showOpenDialog(null); */
 		File selectedImg = getImage();
 		if (selectedImg != null) {
 			String[] info_imgValidity = getImgValidityInfo(selectedImg.getAbsolutePath(), btfc[idx].getImageCombo(), dirtyClicked);
@@ -243,35 +241,6 @@ public class MainViewController {
 			} else {
 				showAlert(message_alert);
 			}
-			/*
-			if (MetadataExtractor.exifExists(selectedImg.getAbsolutePath())) {
-				ImageCombo tmp_ic = btfc[idx].getImageCombo();
-				if (dirtyClicked) {
-					tmp_ic.setPath_imgDirty(selectedImg.getAbsolutePath());
-				} else {
-					tmp_ic.setPath_imgClean(selectedImg.getAbsolutePath());
-				}
-				if (tmp_ic.isComplete()) {
-					if (MetadataExtractor.areOnTheSameDay(tmp_ic.getPath_imgDirty(), tmp_ic.getPath_imgClean())) {
-						setUpImgPath(idx, selectedImg.getAbsolutePath(), dirtyClicked);
-						System.out.println("QAQ!!!");
-						referencedTF.setText(selectedImg.getName());
-					} else {
-						String type = (dirtyClicked) ? "沒垃圾" : "有垃圾";
-						String message_notSameDay = String.format("此照片無法使用，因為拍攝日期與「%s」的照片不同", type);
-						showAlert(message_notSameDay);
-						// for debug
-						System.out.println(btfc[idx].getImageCombo().isComplete());
-						System.out.println(btfc[idx].getImageCombo().getPath_imgDirty());
-						System.out.println(btfc[idx].getImageCombo().getPath_imgClean());
-					}
-				} else {
-					setUpImgPath(idx, selectedImg.getAbsolutePath(), dirtyClicked);
-					referencedTF.setText(selectedImg.getName());
-				}
-			} else {
-				showAlert(message_exifErr);
-			} */
 		} else {
 			setUpImgPath(idx, null, null, referencedTF, dirtyClicked);
 		}
@@ -279,10 +248,18 @@ public class MainViewController {
 	}
 	
 	private File getImage() {
+		// Modify to make the FileChooser remember the last directory it opened.
 		FileChooser fileChooser = new FileChooser();
+		if (image_directory != null && image_directory.isDirectory()) {
+			fileChooser.setInitialDirectory(image_directory);
+		}
 		fileChooser.getExtensionFilters().addAll(
 	         new ExtensionFilter("Image Files", "*.png", "*.jpg"));
 		File selectedImg = fileChooser.showOpenDialog(null);
+		if (selectedImg != null) {
+			image_directory = selectedImg.getParentFile();
+			System.out.println(image_directory.getAbsolutePath());
+		}
 		
 		return selectedImg;
 	}
@@ -293,7 +270,7 @@ public class MainViewController {
 		// First we need to check whether the image's exif exists.
 		if (!MetadataExtractor.exifExists(path_img)) {
 			info_imgValidity[0] = String.valueOf(false);
-			info_imgValidity[1] = message_exifErr;
+			info_imgValidity[1] = MESSAGE_EXIF_ERR;
 			
 			return info_imgValidity;
 		}
@@ -338,56 +315,12 @@ public class MainViewController {
 		}
 	}
 	
-	
-/*	
-	@FXML
-	private void handleSelectButtons(ActionEvent event) {
-		int idx = 0;
-		boolean dirtyClicked = true;
-		for (int i = 0; i < btfc.length; i++) {
-			if (event.getSource() == btfc[i].getDirtyBtn()) {
-				idx = i;
-				break;
-			} else if (event.getSource() == btfc[i].getCleanBtn()) {
-				idx = i;
-				dirtyClicked = false;
-				break;
-			}
-		}
-		
-		Button clickedBtn = (dirtyClicked) ? btfc[idx].getDirtyBtn() : btfc[idx].getCleanBtn();
-		TextField referencedTF = (dirtyClicked) ? btfc[idx].getDirtyTF() : btfc[idx].getCleanTF();
-		
-		clickedBtn.setDisable(true);
-		
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.getExtensionFilters().addAll(
-	         new ExtensionFilter("Image Files", "*.png", "*.jpg"));
-		File selectedImg = fileChooser.showOpenDialog(null);
-		if (selectedImg != null) {
-			if (dirtyClicked) {
-				btfc[idx].getImageCombo().setPath_imgDirty(selectedImg.getAbsolutePath());
-			} else {
-				btfc[idx].getImageCombo().setPath_imgClean(selectedImg.getAbsolutePath());
-			}
-			referencedTF.setText(selectedImg.getName());
-		} else {
-			if (dirtyClicked) {
-				btfc[idx].getImageCombo().setPath_imgDirty(null);
-			} else {
-				btfc[idx].getImageCombo().setPath_imgClean(null);
-			}
-			referencedTF.clear();
-		}
-		clickedBtn.setDisable(false);
-	} */
-	
 	private boolean isReadyToUpload(String message) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		ButtonType btn_ok = new ButtonType("確認");
 		ButtonType btn_cancel = new ButtonType("取消");
 		alert.getButtonTypes().setAll(btn_ok, btn_cancel);
-		alert.setTitle(title_alert);
+		alert.setTitle(TITLE_ALERT);
 		alert.setHeaderText(null);
 		alert.setContentText(message);
 		Optional<ButtonType> result = alert.showAndWait();
@@ -397,7 +330,7 @@ public class MainViewController {
 	
 	private void showAlert(String message) {
 		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle(title_alert);
+		alert.setTitle(TITLE_ALERT);
 		alert.setHeaderText(null);
 		alert.setContentText(message);
 		alert.showAndWait();
