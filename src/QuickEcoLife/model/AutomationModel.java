@@ -191,25 +191,6 @@ public class AutomationModel {
 		}
 	}
 	
-/*	private void selectDate(String year, String month, String day, String journal_type)
-	{
-		String[] selector_ids = {"cphMain_ucDateTime_cboYear", "cphMain_ucDateTime_cboMonth", "cphMain_ucDateTime_cboDay",
-					"cphMain_ucDateTime_cboHour", "cphMain_ucDateTime_cboMinute",
-						"cphMain_ucDateTime_cboHourEnd", "cphMain_ucDateTime_cboMinuteEnd"};
-		
-		String[] selector_values = {year, month, day, "8", "0", "17", "30"};
-		
-		
-		for (int i = 0; i < selector_ids.length; i++) {
-			Select selector = new Select(driver.findElement(By.id(selector_ids[i])));
-			selector.selectByVisibleText(selector_values[i]);
-		}
-		if (journal_type.equals("clear")) {
-			Select selector = new Select(driver.findElement(By.id("cphMain_ucDateTime_cboDayEnd")));
-			selector.selectByVisibleText(day);
-		}
-	} */
-	
 	private void selectRoute() {
 		// Handle the route selector
 		String id_route = "cphMain_cboClear";
@@ -315,31 +296,6 @@ public class AutomationModel {
 		
 		return driver.getTitle().contains(partOf_title);
 	}
-	
-/*	private String[] extractImgExif(String img_path)
-	{
-		Metadata metadata;
-		String[] date_info = new String[5];
-		try {
-			metadata = ImageMetadataReader.readMetadata(new File(img_path));
-			ExifSubIFDDirectory directory
-			    = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
-
-			// query the tag's value
-			Date date
-			    = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL, TimeZone.getTimeZone("GMT+8:00"));
-			String pattern = "yyyy/M/d/H/m"; // "yyyy/M/d/H/m"
-		    SimpleDateFormat formatted_data = new SimpleDateFormat(pattern);
-		    date_info = formatted_data.format(date).split("\\/", -1);
-		    
-		    return date_info;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-			return date_info;
-		}
-	} */
 	
 	private void checkAlert() {
 	    try {
