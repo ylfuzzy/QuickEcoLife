@@ -112,7 +112,7 @@ public class AutomationModel {
 	public void automateJournalPost(List<ImageCombo> imageCombos, String journal_type) {	 
 		// For each imgCombo, select the date according to the image's exif
 		int num_uploaded = 0;
-		System.out.println("autoJP size: " + imageCombos.size());
+		System.out.println("ImageCombos size: " + imageCombos.size());
 		for (ImageCombo imgCombo : imageCombos) {
 			goToJournalPage(journal_type);
 			
@@ -205,9 +205,6 @@ public class AutomationModel {
 			= wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id(id_journalCreation))));
 		clickable_journalCreationBut.click();
 		
-	//	String id_diaryCreation = "cphMain_btnOk";
-	//	driver.findElement(By.id(id_diaryCreation)).click();
-		
 		// Handle the Alert popups.
 		checkAlert();
 		
@@ -269,7 +266,9 @@ public class AutomationModel {
 		actions.click().perform();
 		
 		// Delete the selected square icon so it won't be selected again.
-		square_icons.remove(randomNum);
+		if (square_icons.size() > 1) {
+			square_icons.remove(randomNum);
+		}
 	}
 	
 	private void uploadImg(String img_path, String status) {

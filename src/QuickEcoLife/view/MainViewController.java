@@ -198,13 +198,11 @@ public class MainViewController {
 	
 	@FXML
 	private void mouseEntered(MouseEvent e) {
-		System.out.println("enter!!");
 		getCurrentPreviewImage(e).getImageView().setStyle(CSS_SHADOW);
 	}
 	
 	@FXML
 	private void mouseExisted(MouseEvent e) {
-		System.out.println("exit");
 		getCurrentPreviewImage(e).getImageView().setStyle(null);
 	}
 	
@@ -220,10 +218,8 @@ public class MainViewController {
 	@FXML
 	private void dragOver(DragEvent e) {
 		getCurrentPreviewImage(e).getImageView().setStyle(CSS_SHADOW);
-		System.out.println("dragover");
 		Dragboard db = e.getDragboard();
 		if (db.hasFiles() && isImage(db.getFiles().get(0))) {
-			System.out.println("has Image!!");
 			e.acceptTransferModes(TransferMode.COPY);
 		}
 	}
@@ -235,7 +231,6 @@ public class MainViewController {
 	
 	@FXML
 	private void dragDropped(DragEvent e) {
-		System.out.println("dragdropped");
 		Dragboard db = e.getDragboard();
 		PreviewImage currentPreviewImage = getCurrentPreviewImage(e);
 		try {
@@ -331,7 +326,6 @@ public class MainViewController {
 		File selectedImg = fileChooser.showOpenDialog(null);
 		if (selectedImg != null) {
 			image_directory = selectedImg.getParentFile();
-			System.out.println(image_directory.getAbsolutePath());
 		}
 		
 		return selectedImg;
@@ -351,7 +345,7 @@ public class MainViewController {
 		// Now we are sure that exif exists, but we still need to know
 		// if the imageCombo is complete, whether both dirty and clean images are on the same day?
 		// The EcoLife website accepts only images taken on the same day.
-		ImageCombo tmp_ic = new ImageCombo(imageCombo.getPath_imgDirty(), imageCombo.getPath_imgClean());
+		ImageCombo tmp_ic = new ImageCombo(imageCombo);
 		if (dirtyClicked) {
 			tmp_ic.setPath_imgDirty(path_img);
 		} else {
