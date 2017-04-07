@@ -250,6 +250,7 @@ public class MainViewController {
 		} finally {
 			e.setDropCompleted(true);
 			currentPreviewImage.getImageView().setStyle(null);
+			fileChooser_available = true;
 		}
 	}
 	
@@ -382,7 +383,12 @@ public class MainViewController {
 		Image image = DROP_IMAGE_HERE;
 		if (selectedImg != null) {
 			img_path = selectedImg.getAbsolutePath();
-			image = new Image(selectedImg.toURI().toString());
+			
+			// load an image and resize it to width of 100 while preserving its
+			// original aspect ratio, using faster filtering method 
+			int img_width = 200;
+			image = new Image(selectedImg.toURI().toString(), img_width, 0, true, false);
+			//image = new Image(selectedImg.toURI().toString());
 		}
 		if (previewImage.isDirtyImage()) {
 			previewImage.getPointedPreviewImageCombo().getImageCombo().setPath_imgDirty(img_path);
