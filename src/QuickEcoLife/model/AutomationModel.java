@@ -3,7 +3,9 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -15,6 +17,7 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 //import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -64,6 +67,15 @@ public class AutomationModel {
 		// To accept SSL certificate
 		DesiredCapabilities capability = DesiredCapabilities.chrome();
 		capability.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+		
+		// Ignore ChromeDriver user preferences
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("disable-extensions");
+		Map<String, Object> prefs = new LinkedHashMap<>();
+		prefs.put("credentials_enable_service", Boolean.valueOf(false));
+		prefs.put("profile.password_manager_enabled", Boolean.valueOf(false));
+		chromeOptions.setExperimentalOption("prefs", prefs);
+		capability.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
 		
 		// Initialize chromedriver with capability
 		driver = new ChromeDriver(capability);

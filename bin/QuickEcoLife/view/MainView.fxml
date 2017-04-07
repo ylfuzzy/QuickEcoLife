@@ -44,12 +44,12 @@
                                   <RowConstraints vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <ImageView fx:id="imageView_inspect_00" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExisted" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <ImageView fx:id="imageView_inspect_00" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <image>
                                           <Image url="@img/drop_here.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="imageView_inspect_01" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExisted" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <ImageView fx:id="imageView_inspect_01" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <image>
                                           <Image url="@img/drop_here.png" />
                                        </image>
@@ -65,12 +65,12 @@
                                     <RowConstraints vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <ImageView fx:id="imageView_inspect_10" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExisted" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <ImageView fx:id="imageView_inspect_10" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <image>
                                           <Image url="@img/drop_here.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="imageView_inspect_11" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExisted" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <ImageView fx:id="imageView_inspect_11" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <image>
                                           <Image url="@img/drop_here.png" />
                                        </image>
@@ -86,12 +86,12 @@
                                     <RowConstraints vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <ImageView fx:id="imageView_inspect_20" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExisted" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <ImageView fx:id="imageView_inspect_20" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <image>
                                           <Image url="@img/drop_here.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="imageView_inspect_21" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExisted" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <ImageView fx:id="imageView_inspect_21" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <image>
                                           <Image url="@img/drop_here.png" />
                                        </image>
@@ -107,12 +107,12 @@
                                     <RowConstraints vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <ImageView fx:id="imageView_inspect_30" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExisted" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <ImageView fx:id="imageView_inspect_30" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <image>
                                           <Image url="@img/drop_here.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="imageView_inspect_31" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExisted" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <ImageView fx:id="imageView_inspect_31" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <image>
                                           <Image url="@img/drop_here.png" />
                                        </image>
@@ -172,12 +172,12 @@
                                     <RowConstraints vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <ImageView fx:id="imageView_clear_00" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExisted" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <ImageView fx:id="imageView_clear_00" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <image>
                                           <Image url="@img/drop_here.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="imageView_clear_01" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExisted" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <ImageView fx:id="imageView_clear_01" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <image>
                                           <Image url="@img/drop_here.png" />
                                        </image>
@@ -193,12 +193,12 @@
                                     <RowConstraints vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <ImageView fx:id="imageView_clear_10" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExisted" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <ImageView fx:id="imageView_clear_10" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <image>
                                           <Image url="@img/drop_here.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="imageView_clear_11" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExisted" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <ImageView fx:id="imageView_clear_11" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <image>
                                           <Image url="@img/drop_here.png" />
                                        </image>
@@ -214,12 +214,12 @@
                                     <RowConstraints vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <ImageView fx:id="imageView_clear_20" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExisted" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <ImageView fx:id="imageView_clear_20" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <image>
                                           <Image url="@img/drop_here.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="imageView_clear_21" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExisted" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <ImageView fx:id="imageView_clear_21" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <image>
                                           <Image url="@img/drop_here.png" />
                                        </image>
@@ -235,12 +235,12 @@
                                     <RowConstraints vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <ImageView fx:id="imageView_clear_30" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExisted" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <ImageView fx:id="imageView_clear_30" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <image>
                                           <Image url="@img/drop_here.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="imageView_clear_31" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExisted" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <ImageView fx:id="imageView_clear_31" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <image>
                                           <Image url="@img/drop_here.png" />
                                        </image>

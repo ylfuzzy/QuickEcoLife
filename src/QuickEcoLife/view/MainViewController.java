@@ -1,6 +1,7 @@
 package QuickEcoLife.view;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -198,16 +199,20 @@ public class MainViewController {
 	
 	@FXML
 	private void mouseEntered(MouseEvent e) {
+		System.out.println("DEBUG: MouseEntered");
 		getCurrentPreviewImage(e).getImageView().setStyle(CSS_SHADOW);
 	}
 	
 	@FXML
-	private void mouseExisted(MouseEvent e) {
+	private void mouseExited(MouseEvent e) {
+		System.out.println("DEBUG: MouseExited");
 		getCurrentPreviewImage(e).getImageView().setStyle(null);
 	}
 	
 	@FXML
 	private void mouseClicked(MouseEvent e) {
+		System.out.println("DEBUG: mouseClicked");
+		System.out.println(fileChooser_available);
 		if (fileChooser_available) {
 			fileChooser_available = false;
 			handleImage(getCurrentPreviewImage(e), getImgFileFromFileChooser());
@@ -217,6 +222,7 @@ public class MainViewController {
 	
 	@FXML
 	private void dragOver(DragEvent e) {
+		System.out.println("DEBUG: dragOver");
 		getCurrentPreviewImage(e).getImageView().setStyle(CSS_SHADOW);
 		Dragboard db = e.getDragboard();
 		if (db.hasFiles() && isImage(db.getFiles().get(0))) {
@@ -226,11 +232,13 @@ public class MainViewController {
 	
 	@FXML
 	private void dragExited(DragEvent e) {
+		System.out.println("DEBUG: dragExited");
 		getCurrentPreviewImage(e).getImageView().setStyle(null);
 	}
 	
 	@FXML
 	private void dragDropped(DragEvent e) {
+		System.out.println("DEBUG: dragDropped");
 		Dragboard db = e.getDragboard();
 		PreviewImage currentPreviewImage = getCurrentPreviewImage(e);
 		try {
