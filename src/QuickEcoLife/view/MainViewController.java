@@ -1,13 +1,14 @@
 package QuickEcoLife.view;
 
 import java.io.File;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import javax.activation.MimetypesFileTypeMap;
 
+import org.controlsfx.control.textfield.AutoCompletionBinding;
+import org.controlsfx.control.textfield.TextFields;
 import org.openqa.selenium.WebDriverException;
 
 import QuickEcoLife.model.AutomationModel;
@@ -15,6 +16,7 @@ import QuickEcoLife.util.ImageCombo;
 import QuickEcoLife.util.MetadataExtractor;
 import QuickEcoLife.util.PreviewImage;
 import QuickEcoLife.util.PreviewImageCombo;
+import QuickEcoLife.util.ResourceHandler;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,6 +30,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.stage.FileChooser;
@@ -36,6 +39,9 @@ import javafx.stage.FileChooser.ExtensionFilter;
 public class MainViewController {
 	@FXML
 	private TextField tf_ID;
+	private List<String> autoCompletionList;
+	private AutoCompletionBinding<String> autoCompletionBinding;
+	
 	@FXML
 	private PasswordField tf_passwd;
 	@FXML
@@ -122,6 +128,12 @@ public class MainViewController {
 		previewImageCombos[5] = new PreviewImageCombo(new PreviewImage(imageView_clear_10, true), new PreviewImage(imageView_clear_11, false), false);
 		previewImageCombos[6] = new PreviewImageCombo(new PreviewImage(imageView_clear_20, true), new PreviewImage(imageView_clear_21, false), false);
 		previewImageCombos[7] = new PreviewImageCombo(new PreviewImage(imageView_clear_30, true), new PreviewImage(imageView_clear_31, false), false);
+		
+		// Read id history from id_history.data with the help of ResourceHandler.
+		autoCompletionList = ResourceHandler.getAutoCompleteListFromIDHistory();
+		
+		// Bind autoCompletionList to tf_ID.
+		autoCompletionBinding = TextFields.bindAutoCompletion(tf_ID, autoCompletionList);
 	}
 	
 	private String getID() {
@@ -130,6 +142,15 @@ public class MainViewController {
 	
 	private String getPasswd() {
 		return (tf_passwd.getText() == null) ? "" : tf_passwd.getText();
+	}
+	
+	private void saveID(String id) {
+		if (!autoCompletionList.contains(id)) {
+			ResourceHandler.saveToIDHistory(id);
+			autoCompletionList.add(id);
+			autoCompletionBinding.dispose();
+			autoCompletionBinding = TextFields.bindAutoCompletion(tf_ID, autoCompletionList);
+		}
 	}
 	
 	@FXML
@@ -164,8 +185,13 @@ public class MainViewController {
 				Runnable task = () -> {
 					AutomationModel automationModel = new AutomationModel();
 					try {
-//						AutomationModel automationModel = new AutomationModel();
-						if (automationModel.loginSuccessfully(getID(), getPasswd())) {
+						String id = getID();
+						String passwd = getPasswd();
+						if (automationModel.loginSuccessfully(id, passwd)) {
+							// Since login successfully, this is a valid id.
+							// Therefore save it to history_id.data.
+							saveID(id);
+							
 							// Ready to upload images
 							if (!imageCombos_inspect.isEmpty()) {
 								automationModel.automateJournalPost(imageCombos_inspect, "inspect");
@@ -195,6 +221,16 @@ public class MainViewController {
 			// Debug info
 			System.out.println("no image can be uploaded.");
 		} 
+	}
+	
+	@FXML
+	private void keyReleased(KeyEvent e) {
+		String id = getID();
+		if (autoCompletionList.contains(id)) {
+			String passwd = "east" + id;
+			tf_passwd.clear();
+			tf_passwd.setText(passwd);
+		}
 	}
 	
 	@FXML
@@ -384,8 +420,7 @@ public class MainViewController {
 		if (selectedImg != null) {
 			img_path = selectedImg.getAbsolutePath();
 			
-			// load an image and resize it to width of 100 while preserving its
-			// original aspect ratio, using faster filtering method 
+			// Load an image and resize it to width of 200 while preserving its original aspect ratio.
 			int img_width = 200;
 			image = new Image(selectedImg.toURI().toString(), img_width, 0, true, false);
 			//image = new Image(selectedImg.toURI().toString());

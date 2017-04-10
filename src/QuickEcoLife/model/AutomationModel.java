@@ -1,7 +1,4 @@
 package QuickEcoLife.model;
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -15,7 +12,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
-//import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -27,9 +23,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import QuickEcoLife.util.ImageCombo;
 import QuickEcoLife.util.MetadataExtractor;
+import QuickEcoLife.util.ResourceHandler;
 
 public class AutomationModel {
-	private String dir_working = null;
 	private WebDriver driver = null;
 	
 	// Initialize at selectRandomPoint()
@@ -39,30 +35,7 @@ public class AutomationModel {
 	 * Initialize WebDriver with specified parameters.
 	 */
 	public AutomationModel() throws NullPointerException, WebDriverException {	
-		// To get the working directory of the running jar.
-		dir_working
-			= ClassLoader.getSystemClassLoader().getResource(".").getPath();
-		try {
-			dir_working = URLDecoder.decode(dir_working, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		// File name for Unix like OS.
-		String chromedriver_name = "chromedriver";
-		
-		// If the program runs on the Windows system, 
-		// the filename extension ".exe" needs to be appended.
-		if (System.getProperty("os.name").startsWith("Windows")) {
-			chromedriver_name += ".exe";
-		}
-		
-		// There will be a directory called "res" in the jar's working directory
-		// and the chromedriver will be put inside the "res".
-		String chromedriver_path
-			= dir_working + "res" + File.separator + chromedriver_name;
-		System.setProperty("webdriver.chrome.driver", chromedriver_path);
+		System.setProperty("webdriver.chrome.driver", ResourceHandler.getChromeDriverPath());
 		
 		// To accept SSL certificate
 		DesiredCapabilities capability = DesiredCapabilities.chrome();
