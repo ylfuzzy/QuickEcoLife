@@ -18,6 +18,8 @@ import QuickEcoLife.util.PreviewImage;
 import QuickEcoLife.util.PreviewImageCombo;
 import QuickEcoLife.util.ResourceHandler;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -134,6 +136,9 @@ public class MainViewController {
 		
 		// Bind autoCompletionList to tf_ID.
 		autoCompletionBinding = TextFields.bindAutoCompletion(tf_ID, autoCompletionList);
+		
+		// Add tf_ID change listener
+		tf_IDTextChanged();
 	}
 	
 	private String getID() {
@@ -151,6 +156,23 @@ public class MainViewController {
 			autoCompletionBinding.dispose();
 			autoCompletionBinding = TextFields.bindAutoCompletion(tf_ID, autoCompletionList);
 		}
+	}
+	
+	private void tf_IDTextChanged() {
+		// Add tf_ID change listener
+		tf_ID.textProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable,
+					String oldValue, String newValue) {
+			
+				String id = getID();
+				if (autoCompletionList.contains(id)) {
+					String passwd = "east" + id;
+					tf_passwd.clear();
+					tf_passwd.setText(passwd);
+				}
+		    }
+		});
 	}
 	
 	@FXML
@@ -221,16 +243,6 @@ public class MainViewController {
 			// Debug info
 			System.out.println("no image can be uploaded.");
 		} 
-	}
-	
-	@FXML
-	private void keyReleased(KeyEvent e) {
-		String id = getID();
-		if (autoCompletionList.contains(id)) {
-			String passwd = "east" + id;
-			tf_passwd.clear();
-			tf_passwd.setText(passwd);
-		}
 	}
 	
 	@FXML
