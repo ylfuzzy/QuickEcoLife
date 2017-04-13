@@ -1,11 +1,17 @@
 package QuickEcoLife.util;
 
 public class ImageCombo {
-	private String path_imgDirty = null;
-	private String path_imgClean = null;
+	private String path_imgDirty;
+	private String path_imgClean;
 	
 	public ImageCombo() {
-		
+		this.path_imgDirty = null;
+		this.path_imgClean = null;
+	}
+	
+	public ImageCombo(ImageCombo imageCombo) {
+		this.path_imgDirty = imageCombo.getPath_imgDirty();
+		this.path_imgClean = imageCombo.getPath_imgClean();
 	}
 	
 	public ImageCombo(String path_imgDirty, String path_imgClean) {

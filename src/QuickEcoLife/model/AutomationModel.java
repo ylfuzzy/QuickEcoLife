@@ -1,9 +1,8 @@
 package QuickEcoLife.model;
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -13,8 +12,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
-//import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -24,9 +23,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import QuickEcoLife.util.ImageCombo;
 import QuickEcoLife.util.MetadataExtractor;
+import QuickEcoLife.util.ResourceHandler;
 
 public class AutomationModel {
-	private String dir_working = null;
 	private WebDriver driver = null;
 	
 	// Initialize at selectRandomPoint()
@@ -36,34 +35,20 @@ public class AutomationModel {
 	 * Initialize WebDriver with specified parameters.
 	 */
 	public AutomationModel() throws NullPointerException, WebDriverException {	
-		// To get the working directory of the running jar.
-		dir_working
-			= ClassLoader.getSystemClassLoader().getResource(".").getPath();
-		try {
-			dir_working = URLDecoder.decode(dir_working, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		// File name for Unix like OS.
-		String chromedriver_name = "chromedriver";
-		
-		// If the program runs on the Windows system, 
-		// the filename extension ".exe" needs to be appended.
-		if (System.getProperty("os.name").startsWith("Windows")) {
-			chromedriver_name += ".exe";
-		}
-		
-		// There will be a directory called "res" in the jar's working directory
-		// and the chromedriver will be put inside the "res".
-		String chromedriver_path
-			= dir_working + "res" + File.separator + chromedriver_name;
-		System.setProperty("webdriver.chrome.driver", chromedriver_path);
+		System.setProperty("webdriver.chrome.driver", ResourceHandler.getChromeDriverPath());
 		
 		// To accept SSL certificate
 		DesiredCapabilities capability = DesiredCapabilities.chrome();
 		capability.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+		
+		// Ignore ChromeDriver user preferences
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("disable-extensions");
+		Map<String, Object> prefs = new LinkedHashMap<>();
+		prefs.put("credentials_enable_service", Boolean.valueOf(false));
+		prefs.put("profile.password_manager_enabled", Boolean.valueOf(false));
+		chromeOptions.setExperimentalOption("prefs", prefs);
+		capability.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
 		
 		// Initialize chromedriver with capability
 		driver = new ChromeDriver(capability);
@@ -112,7 +97,7 @@ public class AutomationModel {
 	public void automateJournalPost(List<ImageCombo> imageCombos, String journal_type) {	 
 		// For each imgCombo, select the date according to the image's exif
 		int num_uploaded = 0;
-		System.out.println("autoJP size: " + imageCombos.size());
+		System.out.println("ImageCombos size: " + imageCombos.size());
 		for (ImageCombo imgCombo : imageCombos) {
 			goToJournalPage(journal_type);
 			
@@ -191,25 +176,6 @@ public class AutomationModel {
 		}
 	}
 	
-/*	private void selectDate(String year, String month, String day, String journal_type)
-	{
-		String[] selector_ids = {"cphMain_ucDateTime_cboYear", "cphMain_ucDateTime_cboMonth", "cphMain_ucDateTime_cboDay",
-					"cphMain_ucDateTime_cboHour", "cphMain_ucDateTime_cboMinute",
-						"cphMain_ucDateTime_cboHourEnd", "cphMain_ucDateTime_cboMinuteEnd"};
-		
-		String[] selector_values = {year, month, day, "8", "0", "17", "30"};
-		
-		
-		for (int i = 0; i < selector_ids.length; i++) {
-			Select selector = new Select(driver.findElement(By.id(selector_ids[i])));
-			selector.selectByVisibleText(selector_values[i]);
-		}
-		if (journal_type.equals("clear")) {
-			Select selector = new Select(driver.findElement(By.id("cphMain_ucDateTime_cboDayEnd")));
-			selector.selectByVisibleText(day);
-		}
-	} */
-	
 	private void selectRoute() {
 		// Handle the route selector
 		String id_route = "cphMain_cboClear";
@@ -223,9 +189,6 @@ public class AutomationModel {
 		WebElement clickable_journalCreationBut
 			= wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id(id_journalCreation))));
 		clickable_journalCreationBut.click();
-		
-	//	String id_diaryCreation = "cphMain_btnOk";
-	//	driver.findElement(By.id(id_diaryCreation)).click();
 		
 		// Handle the Alert popups.
 		checkAlert();
@@ -288,7 +251,9 @@ public class AutomationModel {
 		actions.click().perform();
 		
 		// Delete the selected square icon so it won't be selected again.
-		square_icons.remove(randomNum);
+		if (square_icons.size() > 1) {
+			square_icons.remove(randomNum);
+		}
 	}
 	
 	private void uploadImg(String img_path, String status) {
@@ -315,31 +280,6 @@ public class AutomationModel {
 		
 		return driver.getTitle().contains(partOf_title);
 	}
-	
-/*	private String[] extractImgExif(String img_path)
-	{
-		Metadata metadata;
-		String[] date_info = new String[5];
-		try {
-			metadata = ImageMetadataReader.readMetadata(new File(img_path));
-			ExifSubIFDDirectory directory
-			    = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
-
-			// query the tag's value
-			Date date
-			    = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL, TimeZone.getTimeZone("GMT+8:00"));
-			String pattern = "yyyy/M/d/H/m"; // "yyyy/M/d/H/m"
-		    SimpleDateFormat formatted_data = new SimpleDateFormat(pattern);
-		    date_info = formatted_data.format(date).split("\\/", -1);
-		    
-		    return date_info;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-			return date_info;
-		}
-	} */
 	
 	private void checkAlert() {
 	    try {

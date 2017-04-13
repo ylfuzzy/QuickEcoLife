@@ -39,5 +39,6 @@
 	<classpathentry kind="lib" path="/Users/ylfuzzy/workspace/selenium-java-3.2.0/client-combined-3.2.0-nodeps.jar"/>
 	<classpathentry kind="lib" path="/Users/ylfuzzy/workspace/javaLib/metadata-extractor-2.9.1/metadata-extractor-2.9.1.jar"/>
 	<classpathentry kind="lib" path="/Users/ylfuzzy/workspace/javaLib/metadata-extractor-2.9.1/xmpcore-5.1.2.jar"/>
+	<classpathentry kind="lib" path="/Users/ylfuzzy/workspace/javaLib/controlsfx-8.40.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

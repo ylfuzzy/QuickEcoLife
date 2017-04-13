@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -14,13 +16,112 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuickEcoLife.view.MainViewController">
+<AnchorPane minHeight="650.0" minWidth="600.0" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuickEcoLife.view.MainViewController">
    <children>
       <TabPane layoutX="119.0" layoutY="64.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-          <Tab text="巡檢">
+            <Tab text="巡檢">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <GridPane BorderPane.alignment="CENTER">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints vgrow="SOMETIMES" />
+                            <RowConstraints vgrow="SOMETIMES" />
+                            <RowConstraints vgrow="SOMETIMES" />
+                            <RowConstraints vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <GridPane styleClass="card">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" />
+                                  <ColumnConstraints hgrow="SOMETIMES" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <ImageView fx:id="imageView_inspect_00" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <image>
+                                          <Image url="@img/drop_here.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="imageView_inspect_01" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <image>
+                                          <Image url="@img/drop_here.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </GridPane>
+                              <GridPane style="-fx-background-color: #e7e8e5;" GridPane.rowIndex="1">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <ImageView fx:id="imageView_inspect_10" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <image>
+                                          <Image url="@img/drop_here.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="imageView_inspect_11" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <image>
+                                          <Image url="@img/drop_here.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </GridPane>
+                              <GridPane styleClass="card" GridPane.rowIndex="2">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <ImageView fx:id="imageView_inspect_20" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <image>
+                                          <Image url="@img/drop_here.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="imageView_inspect_21" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <image>
+                                          <Image url="@img/drop_here.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </GridPane>
+                              <GridPane style="-fx-background-color: #e7e8e5;" styleClass="card" GridPane.rowIndex="3">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <ImageView fx:id="imageView_inspect_30" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <image>
+                                          <Image url="@img/drop_here.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="imageView_inspect_31" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <image>
+                                          <Image url="@img/drop_here.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </GridPane>
+                     </center>
                      <top>
                         <GridPane BorderPane.alignment="CENTER">
                           <columnConstraints>
@@ -44,47 +145,111 @@
                            </children>
                         </GridPane>
                      </top>
-                     <center>
-                        <GridPane BorderPane.alignment="CENTER">
-                          <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="50.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <TextField fx:id="tf_inspect_00" editable="false" style="-fx-alignment: center;" GridPane.columnIndex="1" />
-                              <TextField fx:id="tf_inspect_10" editable="false" style="-fx-alignment: center;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField fx:id="tf_inspect_20" editable="false" style="-fx-alignment: center;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <TextField fx:id="tf_inspect_30" editable="false" style="-fx-alignment: center;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <TextField fx:id="tf_inspect_04" editable="false" style="-fx-alignment: center;" GridPane.columnIndex="3" />
-                              <TextField fx:id="tf_inspect_14" editable="false" style="-fx-alignment: center;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <TextField fx:id="tf_inspect_24" editable="false" style="-fx-alignment: center;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                              <TextField fx:id="tf_inspect_34" editable="false" style="-fx-alignment: center;" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                              <Button fx:id="btn_inspect_00" mnemonicParsing="false" onAction="#handleSelectButtons" text="Select" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
-                              <Button fx:id="btn_inspect_10" mnemonicParsing="false" onAction="#handleSelectButtons" text="Select" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-                              <Button fx:id="btn_inspect_20" mnemonicParsing="false" onAction="#handleSelectButtons" text="Select" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                              <Button fx:id="btn_inspect_30" mnemonicParsing="false" onAction="#handleSelectButtons" text="Select" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-                              <Button fx:id="btn_inspect_04" mnemonicParsing="false" onAction="#handleSelectButtons" text="Select" GridPane.columnIndex="4" />
-                              <Button fx:id="btn_inspect_14" mnemonicParsing="false" onAction="#handleSelectButtons" text="Select" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                              <Button fx:id="btn_inspect_24" mnemonicParsing="false" onAction="#handleSelectButtons" text="Select" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                              <Button fx:id="btn_inspect_34" mnemonicParsing="false" onAction="#handleSelectButtons" text="Select" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                           </children>
-                        </GridPane>
-                     </center>
                   </BorderPane>
                </content>
             </Tab>
             <Tab text="清理">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <GridPane BorderPane.alignment="CENTER">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <GridPane style="-fx-background-color: e7e8e5;" styleClass="card">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <ImageView fx:id="imageView_clear_00" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <image>
+                                          <Image url="@img/drop_here.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="imageView_clear_01" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <image>
+                                          <Image url="@img/drop_here.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </GridPane>
+                              <GridPane GridPane.rowIndex="1">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <ImageView fx:id="imageView_clear_10" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <image>
+                                          <Image url="@img/drop_here.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="imageView_clear_11" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <image>
+                                          <Image url="@img/drop_here.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </GridPane>
+                              <GridPane style="-fx-background-color: e7e8e5;" styleClass="card" GridPane.rowIndex="2">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <ImageView fx:id="imageView_clear_20" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <image>
+                                          <Image url="@img/drop_here.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="imageView_clear_21" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <image>
+                                          <Image url="@img/drop_here.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </GridPane>
+                              <GridPane styleClass="card" GridPane.rowIndex="3">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <ImageView fx:id="imageView_clear_30" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <image>
+                                          <Image url="@img/drop_here.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="imageView_clear_31" fitHeight="150.0" fitWidth="200.0" onDragDropped="#dragDropped" onDragOver="#dragOver" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <image>
+                                          <Image url="@img/drop_here.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </GridPane>
+                     </center>
                      <top>
                         <GridPane BorderPane.alignment="CENTER">
                            <columnConstraints>
@@ -108,43 +273,9 @@
                            </children>
                         </GridPane>
                      </top>
-                     <center>
-                        <GridPane BorderPane.alignment="CENTER">
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="50.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <TextField fx:id="tf_clear_00" style="-fx-alignment: center;" GridPane.columnIndex="1" />
-                              <TextField fx:id="tf_clear_10" style="-fx-alignment: center;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField fx:id="tf_clear_20" style="-fx-alignment: center;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <TextField fx:id="tf_clear_30" style="-fx-alignment: center;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <TextField fx:id="tf_clear_04" style="-fx-alignment: center;" GridPane.columnIndex="3" />
-                              <TextField fx:id="tf_clear_14" style="-fx-alignment: center;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <TextField fx:id="tf_clear_24" style="-fx-alignment: center;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                              <TextField fx:id="tf_clear_34" style="-fx-alignment: center;" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                              <Button fx:id="btn_clear_00" mnemonicParsing="false" onAction="#handleSelectButtons" text="Select" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
-                              <Button fx:id="btn_clear_10" mnemonicParsing="false" onAction="#handleSelectButtons" text="Select" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-                              <Button fx:id="btn_clear_20" mnemonicParsing="false" onAction="#handleSelectButtons" text="Select" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                              <Button fx:id="btn_clear_30" mnemonicParsing="false" onAction="#handleSelectButtons" text="Select" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-                              <Button fx:id="btn_clear_04" mnemonicParsing="false" onAction="#handleSelectButtons" text="Select" GridPane.columnIndex="4" />
-                              <Button fx:id="btn_clear_14" mnemonicParsing="false" onAction="#handleSelectButtons" text="Select" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                              <Button fx:id="btn_clear_24" mnemonicParsing="false" onAction="#handleSelectButtons" text="Select" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                              <Button fx:id="btn_clear_34" mnemonicParsing="false" onAction="#handleSelectButtons" text="Select" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                           </children>
-                        </GridPane>
-                     </center>
                   </BorderPane>
-               </content></Tab>
+               </content>
+            </Tab>
           <Tab text="帳號">
                <content>
                   <GridPane>
@@ -159,8 +290,8 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField fx:id="tf_ID" onAction="#handleButtonGO" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
-                        <PasswordField fx:id="tf_passwd" onAction="#handleButtonGO" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="tf_ID" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
+                        <PasswordField fx:id="tf_passwd" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
                            <font>
                               <Font size="18.0" />
